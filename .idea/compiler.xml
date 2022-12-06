@@ -9,5 +9,8 @@
         <module name="arbre_des_competences" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="arbre_des_competences" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
