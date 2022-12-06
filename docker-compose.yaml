@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: db_postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 123456789
+      POSTGRES_USER: postgres
+      POSTGRES_DB: arbre_des_competences
+    ports:
+        - "5431:5432"
+
+  server:
+    image: tomcat
+    container_name: server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./target/arbre_des_competences-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/ROOT.war
+    depends_on:
+        - db
+
+volumes:
+    db_data:
