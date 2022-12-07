@@ -29,7 +29,6 @@ public class ValidateCompetenceEntity {
     @Basic
     private boolean thire_level_status;
 
-    @Column
     @OneToOne
     @JoinColumn(name = "id_competence", referencedColumnName = "id")
     private CompetenceEntity competence;
