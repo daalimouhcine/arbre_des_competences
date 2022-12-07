@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "referenceSkills")
 public class ReferenceSkillEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

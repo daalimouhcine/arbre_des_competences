@@ -3,6 +3,7 @@ package com.brief.arbre_des_competences.users;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,6 +3,7 @@ package com.brief.arbre_des_competences.competence;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "validateComptences")
 public class ValidateCompetenceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
