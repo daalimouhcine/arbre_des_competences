@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -13,18 +14,21 @@ public class UserService {
     private UserRepository userRepository;
 
     public String loginService(String email, String password) {
-        String status = "500";
-        String message = "login invalid";
-        UserEntity user = userRepository.getUserByEmail(email);
-        if (HashPassword.check(password, user.getPassword())) {
-            status = "200";
-            message = "login successfully";
+        LoginUserResponse response = new LoginUserResponse();
+        response.status = "500";
+        response.message = "login invalid";
+        response.user = userRepository.getUserByEmail(email);
+        if (HashPassword.check(password, response.user.getPassword())) {
+            response.status = "200";
+            response.message = "login successfully";
         }
-        HashMap<String, String> response = new HashMap<>();
-        response.put("status", status);
-        response.put("message", message);
         return new Gson().toJson(response);
+    }
 
+    public String getAllUsers() {
+        List<UserEntity> userList = userRepository.allUsers();
+        for(UserEntity user : userList) user.setPassword("");
+        return new Gson().toJson(userList);
     }
 
 }
