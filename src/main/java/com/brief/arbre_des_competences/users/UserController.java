@@ -16,9 +16,7 @@ public class UserController {
 
     @PostMapping("/login")
     public String loginController(@RequestBody UserEntity user) {
-        Sout.sout("yello", "hello");
-        System.out.println(user.getEmail());
-        return userService.loginService(user.getEmail(), user.getPassword());
+        return  userService.loginService(user.getEmail(), user.getPassword());
     }
 
     @GetMapping("/all")
