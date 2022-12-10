@@ -15,12 +15,13 @@ public class UserService {
 
     public String loginService(String email, String password) {
         LoginUserResponse response = new LoginUserResponse();
-        response.status = "500";
+        response.status = "300";
         response.message = "login invalid";
-        response.user = userRepository.getUserByEmail(email);
-        if (HashPassword.check(password, response.user.getPassword())) {
+        UserEntity userLogin = userRepository.getUserByEmail(email);
+        if (HashPassword.check(password, userLogin.getPassword())) {
             response.status = "200";
             response.message = "login successfully";
+            response.user = userLogin;
         }
         return new Gson().toJson(response);
     }
