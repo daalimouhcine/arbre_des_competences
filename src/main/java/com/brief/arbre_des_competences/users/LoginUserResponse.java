@@ -4,4 +4,6 @@ public class LoginUserResponse {
     public String status;
     public String message;
     public UserEntity user;
+
+
 }
