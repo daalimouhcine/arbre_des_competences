@@ -1,6 +1,7 @@
 package com.brief.arbre_des_competences.users;
 
 import com.brief.arbre_des_competences.utils.HashPassword;
+import com.brief.arbre_des_competences.utils.Sout;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,15 +15,18 @@ public class UserService {
     private UserRepository userRepository;
 
     public String loginService(String email, String password) {
-        LoginUserResponse response = new LoginUserResponse();
-        response.status = "300";
-        response.message = "login invalid";
+        String status = "401";
+        String message = "login invalid";
         UserEntity userLogin = userRepository.getUserByEmail(email);
-        if (HashPassword.check(password, userLogin.getPassword())) {
-            response.status = "200";
-            response.message = "login successfully";
-            response.user = userLogin;
+        if(userLogin != null) {
+            if (HashPassword.check(password, userLogin.getPassword())) {
+                status = "200";
+                message = "login successfully";
+            }
         }
+        HashMap<String, String> response = new HashMap<>();
+        response.put("status", status);
+        response.put("message", message);
         return new Gson().toJson(response);
     }
 
