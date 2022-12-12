@@ -14,15 +14,16 @@ public class UserRepository {
     public UserEntity getUserByEmail(String email) {
         EntityManager em = EntityManagerConfig.getInstance().getEm();
         try {
-            UserEntity user = new UserEntity();
+            UserEntity user = null;
             em.getTransaction().begin();
             Query query = em.createQuery("SELECT U FROM UserEntity U where U.email = :email");
             query.setParameter("email", email);
             user = (UserEntity) query.getSingleResult();
             em.getTransaction().commit();
             return user;
+
         } catch (Exception e) {
-            Sout.sout("red", e.getMessage());
+            Sout.sout("blue", e.getMessage());
             return null;
         } finally {
             em.close();
