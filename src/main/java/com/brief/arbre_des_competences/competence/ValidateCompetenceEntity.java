@@ -20,15 +20,8 @@ public class ValidateCompetenceEntity {
 
     @Column
     @Basic
-    private boolean first_level_status;
+    private int competenceLevel;
 
-    @Column
-    @Basic
-    private boolean second_level_status;
-
-    @Column
-    @Basic
-    private boolean thire_level_status;
 
     @OneToOne
     @JoinColumn(name = "id_competence", referencedColumnName = "id")
@@ -58,28 +51,12 @@ public class ValidateCompetenceEntity {
         this.name = name;
     }
 
-    public boolean getFirst_level_status() {
-        return first_level_status;
+    public int getCompetenceLevel() {
+        return competenceLevel;
     }
 
-    public void setFirst_level_status(boolean first_level_status) {
-        this.first_level_status = first_level_status;
-    }
-
-    public boolean getSecond_level_status() {
-        return second_level_status;
-    }
-
-    public void setSecond_level_status(boolean second_level_status) {
-        this.second_level_status = second_level_status;
-    }
-
-    public boolean getThire_level_status() {
-        return thire_level_status;
-    }
-
-    public void setThire_level_status(boolean thire_level_status) {
-        this.thire_level_status = thire_level_status;
+    public void setCompetenceLevel(int competenceLevel) {
+        this.competenceLevel = competenceLevel;
     }
 
     public CompetenceEntity getCompetence() {
