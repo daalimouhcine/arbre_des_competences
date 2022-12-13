@@ -1,5 +1,6 @@
 package com.brief.arbre_des_competences;
 
+import com.brief.arbre_des_competences.competence.CompetenceEntity;
 import com.brief.arbre_des_competences.config.EntityManagerConfig;
 import com.brief.arbre_des_competences.users.UserEntity;
 import com.brief.arbre_des_competences.utils.HashPassword;
@@ -10,14 +11,15 @@ public class Main{
         EntityManager em = EntityManagerConfig.getInstance().getEm();
         em.getTransaction().begin();
         UserEntity newUser = new UserEntity();
-        newUser.setFirstname("Mouhcine");
-        newUser.setLastname("Daali");
-        newUser.setEmail("the.daali.mouhcine@gmail.com");
-        newUser.setPassword(HashPassword.hash("123456789"));
-        newUser.setImage("default");
-        newUser.setLevel("A1");
+        newUser.setFirstname("Reda");
+        newUser.setLastname("Laghrissi");
         newUser.setClassroom("Brendan Eich");
-        newUser.setPromotion("2022");
+        newUser.setImage("Reda_Laghrissi");
+        newUser.setLevel("A2");
+        newUser.setPromotion("2022-2023");
+        newUser.setEmail("r.laghrissi@student.youcode.ma");
+        newUser.setPassword(HashPassword.hash("123456789"));
+
         em.persist(newUser);
         em.getTransaction().commit();
         em.close();
