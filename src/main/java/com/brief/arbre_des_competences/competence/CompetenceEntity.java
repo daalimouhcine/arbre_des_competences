@@ -17,8 +17,8 @@ public class CompetenceEntity {
     @Basic
     private String name;
 
-    @OneToOne
-    @JoinColumn(name = "id_reference", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "id_reference")
     private ReferenceSkillEntity referenceSkill;
 
     @OneToMany
