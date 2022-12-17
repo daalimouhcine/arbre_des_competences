@@ -19,11 +19,6 @@ public class Main{
         newUser.setPromotion("2022-2023");
         newUser.setEmail("r.laghrissi@student.youcode.ma");
         newUser.setPassword(HashPassword.hash("123456789"));
-
-        CompetenceEntity newCompetence = new CompetenceEntity();
-        newCompetence.setName("Java");
-//        newCompetence.;
-
         em.persist(newUser);
         em.getTransaction().commit();
         em.close();
