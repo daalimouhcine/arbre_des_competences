@@ -12,6 +12,6 @@ public class ReferenceSkillService {
     private ReferenceSkillRepository referenceSkillRepository;
 
     public String getAllReferenceSkills() {
-        return referenceSkillRepository.allReferenceSkills();
+        return new Gson().toJson(referenceSkillRepository.allReferenceSkills());
     }
 }
