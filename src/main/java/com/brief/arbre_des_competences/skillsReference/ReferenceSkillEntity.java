@@ -21,8 +21,7 @@ public class ReferenceSkillEntity {
     @Basic
     private String shortname;
 
-    @OneToMany
-    @JoinColumn(name = "id_competence", referencedColumnName = "id")
+    @OneToMany(mappedBy = "referenceSkill")
     private List<CompetenceEntity> competences;
 
     public long getId() {
